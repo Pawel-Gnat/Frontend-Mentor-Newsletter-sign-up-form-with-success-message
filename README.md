@@ -30,7 +30,7 @@ Users should be able to:
 ### Screenshot
 
 ![](./screenshot2.png)
-<img src="./screenshot1.jpg" alt="" width="400">
+<img src="./screenshot1.png" alt="" width="400">
 
 ### Links
 

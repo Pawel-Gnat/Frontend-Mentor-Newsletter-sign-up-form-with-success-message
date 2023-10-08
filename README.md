@@ -30,12 +30,12 @@ Users should be able to:
 ### Screenshot
 
 ![](./screenshot2.png)
-<img src="./screenshots/screenshot1.jpg" alt="" width="400"
+<img src="./screenshots/screenshot1.jpg" alt="" width="400"/>
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Solution](https://www.frontendmentor.io/solutions/frontend-mentor-newsletter-signup-form-with-success-message-FLHJNd0Btb)
+- Live Site URL: [Live](https://frontend-mentor-newsletter-sign-up-form-with-success-message-nu.vercel.app/)
 
 ## My process
 

@@ -1,0 +1,35 @@
+---
+import Layout from '../layout/Layout.astro'
+import { Icon } from 'astro-icon'
+---
+
+<Layout>
+	<main class="flex items-center">
+		<div
+			class="text-darkSlateGrey mobile:max-w-[365px] mobile:rounded-[2.5rem] mobile:px-14 mobile:h-full flex h-screen flex-col bg-white px-6 py-10"
+		>
+			<Icon name="icon-list" class="mobile:mt-0 mt-28 h-16 min-h-[64px] w-16 min-w-[64px]" />
+			<h1 class="mt-10 text-4xl font-bold">Thanks for subscribing!</h1>
+			<p class="my-7">
+				A confirmation email has been sent to <span class="font-bold"></span>. Please open it and click the button
+				inside to confirm your subscription.
+			</p>
+			<a
+				href="./"
+				class="bg-darkSlateGrey from-gradientPink to-gradientOrange hover:shadow-buttonShadow
+            mobile:mt-0 mt-auto rounded-lg px-6 py-4 text-center text-white hover:bg-gradient-to-r"
+				>Dismiss message</a
+			>
+		</div>
+	</main>
+</Layout>
+
+<script>
+	const urlParams = new URLSearchParams(window.location.search)
+	const email = urlParams.get('email')
+	const resultSpan = document.querySelector('span')
+
+	if (email) {
+		resultSpan.textContent = email
+	}
+</script>

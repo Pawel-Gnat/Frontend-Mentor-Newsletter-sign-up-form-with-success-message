@@ -1,0 +1,102 @@
+---
+import Layout from '../layout/Layout.astro'
+import { Icon } from 'astro-icon'
+import { Image } from 'astro:assets'
+import mobileIllustration from '../assets/images/illustration-sign-up-mobile.svg'
+import desktopIllustration from '../assets/images/illustration-sign-up-desktop.svg'
+---
+
+<Layout>
+	<main class="flex items-center">
+		<div class="flex flex-col bg-white md:max-w-[930px] md:flex-row md:rounded-[2.5rem] md:p-6">
+			<Image class="w-full md:hidden" src={mobileIllustration} alt="" aria-hidden="true" />
+			<Image
+				class="order-2 hidden w-full max-w-[400px] md:block"
+				src={desktopIllustration}
+				alt=""
+				aria-hidden="true"
+			/>
+			<div class="text-darkSlateGrey my-auto px-6 py-10 md:px-14">
+				<h1 class="text-4xl font-bold">Stay updated!</h1>
+				<p class="my-6">Join 60,000+ product managers receiving monthly updates on:</p>
+
+				<ul class="flex flex-col gap-3">
+					<li class="flex items-start gap-4">
+						<Icon name="icon-list" class="w-6 min-w-[24px]" />
+						<p>Product discovery and building what matters</p>
+					</li>
+					<li class="flex items-start gap-4">
+						<Icon name="icon-list" class="w-6 min-w-[24px]" />
+						<p>Measuring to ensure updates are a success</p>
+					</li>
+					<li class="flex items-start gap-4">
+						<Icon name="icon-list" class="w-6 min-w-[24px]" />
+						<p>And much more!</p>
+					</li>
+				</ul>
+				<form class="relative mt-10 flex flex-col">
+					<p class="absolute right-0 hidden text-xs font-bold text-red-400">Valid email required</p>
+					<label for="email" class="text-xs font-bold"> Email address</label>
+					<input
+						id="email"
+						type="text"
+						placeholder="email@company.com"
+						class="border-grey mb-6 mt-2 cursor-pointer rounded-lg border px-6 py-4"
+					/>
+					<button
+						class="bg-darkSlateGrey from-gradientPink to-gradientOrange hover:shadow-buttonShadow
+            rounded-lg px-6 py-4 text-white hover:bg-gradient-to-r"
+					>
+						Subscribe to monthly newsletter</button
+					>
+				</form>
+			</div>
+		</div>
+	</main>
+</Layout>
+
+<script>
+	const contactForm = document.querySelector('form')
+	const emailInput = document.querySelector('form input')
+	const errorText = document.querySelector('form p')
+	let isFormValid
+
+	const showError = () => {
+		emailInput.classList.add('bg-red-100', 'text-red-400', 'border-red-400', 'border-2')
+		errorText.classList.add('block')
+		errorText.classList.remove('hidden')
+	}
+
+	const removeError = () => {
+		emailInput.classList.remove('bg-red-100', 'text-red-400', 'border-red-400', 'border-2')
+		errorText.classList.remove('block')
+		errorText.classList.add('hidden')
+	}
+
+	const validateEmail = () => {
+		const regexp = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/
+
+		if (!regexp.test(emailInput.value.trim())) {
+			showError()
+			isFormValid = false
+		} else {
+			removeError()
+			isFormValid = true
+		}
+	}
+
+	contactForm.addEventListener('change', (e) => {
+		e.preventDefault()
+		validateEmail()
+	})
+
+	contactForm.addEventListener('submit', (e) => {
+		e.preventDefault()
+		if (isFormValid) {
+			// console.log(emailInput.value.trim())
+			const email = emailInput.value.trim()
+			const redirectUrl = `./confirm?email=${encodeURIComponent(email)}`
+			window.location.href = redirectUrl
+		}
+	})
+</script>
